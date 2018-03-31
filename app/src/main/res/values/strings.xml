@@ -4,4 +4,10 @@
     <string name="stand_scouting">Stand Scouting</string>
     <string name="pit_scouting">Pit Scouting</string>
     <string name="lego_night_judging">LEGO Night Judging</string>
+    <string name="title_activity_pit_scouting">PitScouting</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

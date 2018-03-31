@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CombustibleScouting</string>
+    <string name="label">Scouting</string>
+    <string name="stand_scouting">Stand Scouting</string>
+    <string name="pit_scouting">Pit Scouting</string>
+    <string name="lego_night_judging">LEGO Night Judging</string>
+</resources>

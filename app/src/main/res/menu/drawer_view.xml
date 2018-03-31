@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/stand_scouting"
+            android:title="@string/stand_scouting" />
+        <item
+            android:id="@+id/pit_scouting"
+            android:title="@string/pit_scouting" />
+        <item
+            android:id="@+id/lego_night_judging"
+            android:title="@string/lego_night_judging" />
+    </group>
+</menu>

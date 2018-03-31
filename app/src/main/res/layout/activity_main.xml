@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/team_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:hint="Team Number"
+                android:maxLength="4"
+                android:inputType="number"
+                android:textAlignment="center" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/red_alliance"
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/red_rectangle"
+                    android:layout_alignParentLeft="true" />
+
+                <Button
+                    android:id="@+id/blue_alliance"
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/blue_rectangle"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="#FF8000"
+                android:textSize="10pt"
+                android:textAlignment="center"
+                android:text="Submit" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!--
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_view"/>
+        -->
+
+</android.support.v4.widget.DrawerLayout>

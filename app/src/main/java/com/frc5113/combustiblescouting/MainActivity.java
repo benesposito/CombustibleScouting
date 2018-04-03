@@ -3,7 +3,9 @@ package com.frc5113.combustiblescouting;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -19,6 +21,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.frc5113.combustiblescouting.enums.Alliance;
+import com.frc5113.combustiblescouting.fragments.LegoNightJudging;
+import com.frc5113.combustiblescouting.fragments.PitScouting;
+import com.frc5113.combustiblescouting.fragments.StandScouting;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -27,22 +32,15 @@ public class MainActivity extends AppCompatActivity
 	DrawerLayout mDrawerLayout;
 	NavigationView navigationView;
 
-	EditText mTeamNumber;
-	Button mRedAlliance;
-	Button mBlueAlliance;
-
-	Alliance chosenAlliance;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		final Intent pitScouting = new Intent(this, PitScouting.class);
-
 		toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+		getSupportActionBar().setDisplayShowTitleEnabled(false);
 		actionbar = getSupportActionBar();
 		actionbar.setDisplayHomeAsUpEnabled(true);
 		actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -50,9 +48,9 @@ public class MainActivity extends AppCompatActivity
 		mDrawerLayout = findViewById(R.id.drawer_layout);
 		navigationView = findViewById(R.id.nav_view);
 
-		mTeamNumber = (EditText) findViewById(R.id.team_number);
-		mRedAlliance = (Button) findViewById(R.id.red_alliance);
-		mBlueAlliance = (Button) findViewById(R.id.blue_alliance);
+		StandScouting firstFragment = new StandScouting();
+		firstFragment.setArguments(getIntent().getExtras());
+		getSupportFragmentManager().beginTransaction().add(R.id.fl_content, firstFragment).commit();
 
 		navigationView.setNavigationItemSelectedListener(
 				new NavigationView.OnNavigationItemSelectedListener()
@@ -60,39 +58,14 @@ public class MainActivity extends AppCompatActivity
 					@Override
 					public boolean onNavigationItemSelected(@NonNull MenuItem item)
 					{
+						setFragment(item);
 						item.setChecked(true);
 						mDrawerLayout.closeDrawers();
-
-						startActivity(pitScouting);
 
 						return true;
 					}
 				}
 		);
-
-		chosenAlliance = Alliance.NONE;
-
-		mRedAlliance.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View view)
-			{
-				mRedAlliance.setBackgroundResource(R.drawable.selected_red_rectangle);
-				mBlueAlliance.setBackgroundResource(R.drawable.blue_rectangle);
-				chosenAlliance = Alliance.RED_ALLIANCE;
-			}
-		});
-
-		mBlueAlliance.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View view)
-			{
-				mBlueAlliance.setBackgroundResource(R.drawable.selected_blue_rectangle);
-				mRedAlliance.setBackgroundResource(R.drawable.red_rectangle);
-				chosenAlliance = Alliance.BLUE_ALLIANCE;
-			}
-		});
 	}
 
 	@Override
@@ -106,5 +79,28 @@ public class MainActivity extends AppCompatActivity
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void setFragment(MenuItem item)
+	{
+		Fragment fragment = null;
+
+		switch(item.getItemId())
+		{
+			case R.id.stand_scouting:
+				fragment = new StandScouting();
+				break;
+			case R.id.pit_scouting:
+				fragment = new PitScouting();
+				break;
+			case R.id.lego_night_judging:
+				fragment = new LegoNightJudging();
+				break;
+			default:
+				fragment = new StandScouting();
+		}
+
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		fragmentManager.beginTransaction().replace(R.id.fl_content, fragment).commit();
 	}
 }

@@ -1,13 +1,21 @@
 <resources>
     <string name="app_name">CombustibleScouting</string>
     <string name="label">Scouting</string>
+
     <string name="stand_scouting">Stand Scouting</string>
     <string name="pit_scouting">Pit Scouting</string>
     <string name="lego_night_judging">LEGO Night Judging</string>
-    <string name="title_activity_pit_scouting">PitScouting</string>
+    <string name="view_pit_data">View Pit Scouting Data</string>
 
+    <string name="title_activity_pit_scouting">PitScouting</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+
+    <string-array name="drivetrains">
+        <item>Tank Drive</item>
+        <item>H Drive</item>
+        <item>Mecanum Drive</item>
+        <item>Swerve Drive</item>
+    </string-array>
 </resources>
